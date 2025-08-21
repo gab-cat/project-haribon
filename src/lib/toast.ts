@@ -2,8 +2,12 @@
 
 import React from 'react';
 
-import { AlertTriangle, CheckCircle, Info, XCircle } from 'lucide-react';
-import { type ExternalToast, toast } from 'sonner';
+import {
+  AlertTriangle, CheckCircle, Info, XCircle 
+} from 'lucide-react';
+import {
+  type ExternalToast, toast 
+} from 'sonner';
 
 type ShowToastParams = {
   type: 'success' | 'error' | 'warning' | 'info'
@@ -44,6 +48,7 @@ const toastStyles = {
 
 const brandClassNames = {
   toast:
+    // eslint-disable-next-line max-len
     'group pointer-events-auto select-none rounded-lg border bg-card text-card-foreground shadow-md ring-1 ring-border border-l-4 data-[type=success]:border-l-green-500 data-[type=error]:border-l-red-500 data-[type=warning]:border-l-amber-500 data-[type=info]:border-l-blue-500 backdrop-blur-sm',
   title: 'text-sm font-semibold',
   description: 'text-xs text-muted-foreground',
@@ -54,7 +59,9 @@ const brandClassNames = {
     'bg-secondary text-foreground hover:bg-secondary/80 transition-colors',
 } as const;
 
-export const showToast = ({ type, title, ...options }: ShowToastParams) => {
+export const showToast = ({
+  type, title, ...options 
+}: ShowToastParams) => {
   const defaults = toastStyles[type];
 
   const {
@@ -74,7 +81,9 @@ export const showToast = ({ type, title, ...options }: ShowToastParams) => {
     position: position ?? 'top-right',
     richColors: richColors ?? false,
     closeButton: true,
-    classNames: unstyled ? classNames : { ...brandClassNames, ...classNames },
+    classNames: unstyled ? classNames : {
+      ...brandClassNames, ...classNames 
+    },
     ...restOptions,
   });
 };
@@ -87,13 +96,18 @@ export async function promiseToast<T>(
     success: string | ((value: T) => string)
     error?: string | ((error: unknown) => string)
   },
-  options: Partial<ExternalToast> = {}
+  options: Partial<ExternalToast> = {
+  }
 ): Promise<T> {
-  const { position, richColors, unstyled, classNames, ...rest } = options;
+  const {
+    position, richColors, unstyled, classNames, ...rest 
+  } = options;
   const id = toast.loading(messages.loading, {
     position: position ?? 'top-right',
     richColors: richColors ?? false,
-    classNames: unstyled ? classNames : { ...brandClassNames, ...classNames },
+    classNames: unstyled ? classNames : {
+      ...brandClassNames, ...classNames 
+    },
     closeButton: true,
     ...rest,
   });
@@ -107,7 +121,9 @@ export async function promiseToast<T>(
       id,
       position: position ?? 'top-right',
       richColors: richColors ?? false,
-      classNames: unstyled ? classNames : { ...brandClassNames, ...classNames },
+      classNames: unstyled ? classNames : {
+        ...brandClassNames, ...classNames 
+      },
       closeButton: true,
       ...rest,
     });
@@ -121,7 +137,9 @@ export async function promiseToast<T>(
       id,
       position: position ?? 'top-right',
       richColors: richColors ?? false,
-      classNames: unstyled ? classNames : { ...brandClassNames, ...classNames },
+      classNames: unstyled ? classNames : {
+        ...brandClassNames, ...classNames 
+      },
       closeButton: true,
       ...rest,
     });
