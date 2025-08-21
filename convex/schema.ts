@@ -1,10 +1,7 @@
-import { defineSchema, defineTable } from 'convex/server';
-import { v } from 'convex/values';
+import { defineSchema } from 'convex/server';
+
+import { users } from './users/users.model';
 
 export default defineSchema({
-  users: defineTable({
-    name: v.string(),
-    email: v.string(),
-    image: v.string(),
-  }),
+  users
 });

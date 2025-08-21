@@ -46,6 +46,9 @@ export default [
       'indent': ['error', 2],
       'semi': ['error', 'always'],
       'quotes': ['error', 'single', { 'avoidEscape': true }],
+
+      '@typescript-eslint/object-curly-newline': ['error', 'always'],
+      'max-len': ['error', { 'code': 150 }],
       
       // Import sorting and grouping
       'simple-import-sort/imports': ['error', {
