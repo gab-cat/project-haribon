@@ -1,15 +1,8 @@
 'use client';
 
-import { api } from "@/convex/_generated/api";
-import { useQuery } from "convex/react";
-import { useState } from "react";
-import { toast } from "sonner";
+import { useQuery } from 'convex/react';
 
-interface UploadedFile {
-  key: string;
-  url: string;
-  timestamp: number;
-}
+import { api } from '@/convex/_generated/api';
 
 export default function Home() {
   const users = useQuery(api.users.api.getUsers, {
@@ -19,17 +12,6 @@ export default function Home() {
     },
   });
 
-  const [uploadedFiles, setUploadedFiles] = useState<UploadedFile[]>([]);
-
-  const handleUploadComplete = (key: string, url: string) => {
-    const newFile: UploadedFile = {
-      key,
-      url,
-      timestamp: Date.now(),
-    };
-    setUploadedFiles(prev => [newFile, ...prev]);
-    toast.success(`File uploaded successfully! Key: ${key}`);
-  };
 
   return (
     <div className="font-sans min-h-screen p-8 pb-20 gap-16 sm:p-20">

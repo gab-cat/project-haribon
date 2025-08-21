@@ -1,7 +1,9 @@
-import { v } from "convex/values";
-import { MutationCtx } from "../../_generated/server";
-import { r2 } from "../r2";
-import { api } from "@/convex/_generated/api";
+import { v } from 'convex/values';
+
+import { api } from '@/convex/_generated/api';
+
+import { MutationCtx } from '../../_generated/server';
+import { r2 } from '../r2';
 
 
 // Delete file from R2 and database
@@ -18,13 +20,13 @@ export const deleteFileHandler = async (
   // Require authentication
   const currentUser = await ctx.runQuery(api.users.api.getCurrentAuthenticatedUser);
   if (!currentUser) {
-    throw new Error("Unauthorized");
+    throw new Error('Unauthorized');
   }
 
   // Get file metadata from R2 component
   const metadata = await r2.getMetadata(ctx, args.key);
   if (!metadata) {
-    throw new Error("File not found");
+    throw new Error('File not found');
   }
 
   // Delete the object from R2

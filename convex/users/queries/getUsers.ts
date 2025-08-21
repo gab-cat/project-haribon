@@ -1,6 +1,7 @@
-import { QueryCtx } from "@/convex/_generated/server";
-import { Infer, v } from "convex/values";
-import { paginationOptsValidator } from "convex/server";
+import { paginationOptsValidator } from 'convex/server';
+import { Infer, v } from 'convex/values';
+
+import { QueryCtx } from '@/convex/_generated/server';
 
 export const getUsersArgs = v.object({
   paginationOpts: paginationOptsValidator,

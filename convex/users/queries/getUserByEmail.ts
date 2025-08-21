@@ -1,5 +1,6 @@
-import { QueryCtx } from '@/convex/_generated/server';
 import { Infer, v } from 'convex/values';
+
+import { QueryCtx } from '@/convex/_generated/server';
 
 export const getUserByEmailArgs = v.object({
   email: v.string(),

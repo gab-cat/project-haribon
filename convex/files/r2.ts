@@ -1,5 +1,6 @@
-import { R2 } from "@convex-dev/r2";
-import { api, components } from "../_generated/api";
+import { R2 } from '@convex-dev/r2';
+
+import { api, components } from '../_generated/api';
 
 export const r2 = new R2(components.r2);
 
@@ -11,7 +12,7 @@ export const { generateUploadUrl, syncMetadata } = r2.clientApi({
     
     const currentUser = await ctx.runQuery(api.users.api.getCurrentAuthenticatedUser);
     if (!currentUser) {
-      throw new Error("Unauthorized");
+      throw new Error('Unauthorized');
     }
   },
   onUpload: async (ctx, bucket, key) => {
