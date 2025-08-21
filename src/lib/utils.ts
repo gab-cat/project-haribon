@@ -1,5 +1,9 @@
-import { type ClassValue, clsx } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import {
+  type ClassValue, clsx 
+} from 'clsx';
+import {
+  twMerge 
+} from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,7 +23,9 @@ export const compressToWebP = async (file: File): Promise<File> => {
       canvas.toBlob(resolve, 'image/webp', 0.8)
     );
     if (!blob) return file;
-    return new File([blob], file.name.replace(/\.[^.]+$/, '.webp'), { type: 'image/webp' });
+    return new File([blob], file.name.replace(/\.[^.]+$/, '.webp'), {
+      type: 'image/webp' 
+    });
   } catch {
     return file;
   }
