@@ -15,12 +15,12 @@
   "observability": {
     "enabled": true
   },
-  "r2_buckets": [
-    {
-      "binding": "BUCKET",
-      "bucket_name": "project-haribon"
-    }
-  ],
+  //   "r2_buckets": [
+  //     {
+  //       "binding": "BUCKET",
+  //       "bucket_name": "project-haribon"
+  //     }
+  //   ],
   /**
    * Smart Placement
    * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
