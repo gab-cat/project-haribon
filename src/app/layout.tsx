@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
+import { Toaster } from 'sonner';
+
 import { ConvexClientProvider } from '@/components/providers/convex-client.provider';
 
 import './globals.css';
@@ -33,6 +35,7 @@ export default function RootLayout({
         <ConvexClientProvider>
           {children}
         </ConvexClientProvider>
+        <Toaster />
       </body>
     </html>
   );
