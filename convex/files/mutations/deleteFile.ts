@@ -5,17 +5,16 @@ import { api } from '@/convex/_generated/api';
 import { MutationCtx } from '../../_generated/server';
 import { r2 } from '../r2';
 
-
 // Delete file from R2 and database
 export const deleteFileArgs = {
-  key: v.string(),
+  key: v.string()
 };
 
 export const deleteFileHandler = async (
   ctx: MutationCtx,
   args: {
-    key: string;
-  }
+		key: string;
+	}
 ) => {
   // Require authentication
   const currentUser = await ctx.runQuery(api.users.api.getCurrentAuthenticatedUser);

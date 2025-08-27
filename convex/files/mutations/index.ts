@@ -9,5 +9,5 @@ import { deleteFileArgs, deleteFileHandler } from './deleteFile';
 // Delete file from R2 and database
 export const deleteFile = mutation({
   args: deleteFileArgs,
-  handler: deleteFileHandler,
+  handler: deleteFileHandler
 });

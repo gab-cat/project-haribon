@@ -1,0 +1,23 @@
+#!/bin/sh
+
+echo '🚀 Starting pre-push checks...'
+
+echo '🎨 Formatting ...'
+bun run format || {
+  echo '❌ Formatting failed. Please fix formatting errors before pushing.'
+  exit 1
+}
+
+echo '🔍 Linting ...'
+bun run lint || {
+  echo '❌ Linting failed. Please fix linting errors before pushing.'
+  exit 1
+}
+
+echo '🔨 Building ...'
+bun run build || {
+  echo '❌ Building failed. Please fix building errors before pushing.'
+  exit 1
+}
+
+echo '✅ All pre-push checks passed. Proceeding with push. 🚀'

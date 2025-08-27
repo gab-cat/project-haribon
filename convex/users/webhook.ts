@@ -1,28 +1,25 @@
 import { internalMutation } from '../_generated/server';
 
 import {
-  handleUserCreatedArgs, 
-  handleUserCreatedHandler, 
-  handleUserDeletedArgs, 
+  handleUserCreatedArgs,
+  handleUserCreatedHandler,
+  handleUserDeletedArgs,
   handleUserDeletedHandler,
-  handleUserUpdatedArgs, 
-  handleUserUpdatedHandler 
+  handleUserUpdatedArgs,
+  handleUserUpdatedHandler
 } from './mutations';
-
-
-
 
 export const handleUserCreated = internalMutation({
   args: handleUserCreatedArgs,
-  handler: handleUserCreatedHandler,
+  handler: handleUserCreatedHandler
 });
 
 export const handleUserUpdated = internalMutation({
   args: handleUserUpdatedArgs,
-  handler: handleUserUpdatedHandler,
+  handler: handleUserUpdatedHandler
 });
 
 export const handleUserDeleted = internalMutation({
   args: handleUserDeletedArgs,
-  handler: handleUserDeletedHandler,
+  handler: handleUserDeletedHandler
 });

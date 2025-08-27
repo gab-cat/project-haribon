@@ -8,7 +8,7 @@ export const users = defineTable({
   imageUrl: v.optional(v.string()),
   clerkId: v.string(),
   phone: v.optional(v.string()),
-  role: v.union(v.literal('user'), v.literal('admin'), v.literal('superadmin')),
+  role: v.union(v.literal('user'), v.literal('admin'), v.literal('superadmin'))
 })
   .index('by_clerkId', ['clerkId'])
   .index('by_email', ['email']);

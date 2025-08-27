@@ -43,7 +43,10 @@ export default [
     },
     rules: {
       // Basic formatting
-      'indent': ['error', 2],
+      'indent': 'off',
+      'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
+      'react/jsx-indent': 'off',
+      'react/jsx-indent-props': 'off',
       'semi': ['error', 'always'],
       'quotes': ['error', 'single', { 'avoidEscape': true }],
       

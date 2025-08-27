@@ -9,7 +9,7 @@ export const { generateUploadUrl, syncMetadata } = r2.clientApi({
     // For testing purposes, let's allow all uploads
     // In production, you should implement proper authentication
     console.log(`Upload check for bucket: ${bucket}`);
-    
+
     const currentUser = await ctx.runQuery(api.users.api.getCurrentAuthenticatedUser);
     if (!currentUser) {
       throw new Error('Unauthorized');
@@ -21,7 +21,7 @@ export const { generateUploadUrl, syncMetadata } = r2.clientApi({
     // - Updating related entities
     // - Sending notifications
     // - Processing the file (e.g., image resizing)
-    
+
     console.log(`File uploaded successfully: ${key} to bucket: ${bucket}`);
-  },
+  }
 });

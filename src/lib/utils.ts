@@ -1,9 +1,5 @@
-import {
-  type ClassValue, clsx 
-} from 'clsx';
-import {
-  twMerge 
-} from 'tailwind-merge';
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -19,12 +15,10 @@ export const compressToWebP = async (file: File): Promise<File> => {
     const ctx2d = canvas.getContext('2d');
     if (!ctx2d) return file;
     ctx2d.drawImage(imageBitmap, 0, 0);
-    const blob = await new Promise<Blob | null>((resolve) =>
-      canvas.toBlob(resolve, 'image/webp', 0.8)
-    );
+    const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/webp', 0.8));
     if (!blob) return file;
     return new File([blob], file.name.replace(/\.[^.]+$/, '.webp'), {
-      type: 'image/webp' 
+      type: 'image/webp'
     });
   } catch {
     return file;

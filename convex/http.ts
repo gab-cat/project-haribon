@@ -14,7 +14,7 @@ http.route({
     try {
       // Get the webhook secret from environment variables
       const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
-      
+
       if (!webhookSecret) {
         console.error('CLERK_WEBHOOK_SECRET is not set');
         return new Response('Webhook secret not configured', { status: 500 });
@@ -42,7 +42,7 @@ http.route({
         evt = wh.verify(body, {
           'svix-id': svix_id,
           'svix-timestamp': svix_timestamp,
-          'svix-signature': svix_signature,
+          'svix-signature': svix_signature
         });
       } catch (err) {
         console.error('Error verifying webhook signature:', err);
@@ -58,19 +58,19 @@ http.route({
       switch (event.type) {
       case 'user.created':
         await ctx.runMutation(internal.users.webhook.handleUserCreated, {
-          clerkUser: event.data,
+          clerkUser: event.data
         });
         break;
 
       case 'user.updated':
         await ctx.runMutation(internal.users.webhook.handleUserUpdated, {
-          clerkUser: event.data,
+          clerkUser: event.data
         });
         break;
 
       case 'user.deleted':
         await ctx.runMutation(internal.users.webhook.handleUserDeleted, {
-          clerkUserId: (event.data as { id: string }).id,
+          clerkUserId: (event.data as { id: string }).id
         });
         break;
 
@@ -83,7 +83,7 @@ http.route({
       console.error('Error processing Clerk webhook:', error);
       return new Response('Internal server error', { status: 500 });
     }
-  }),
+  })
 });
 
 export default http;
