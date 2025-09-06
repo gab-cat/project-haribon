@@ -10,7 +10,9 @@ export default function DashboardPage() {
         <h1 className='text-2xl font-bold mb-4'>Dashboard</h1>
         {user ? (
           <div>
-            <p className='mb-2'>Welcome, {user.firstName || user.emailAddresses[0]?.emailAddress}!</p>
+            <p className='mb-2'>
+              Welcome, {user.firstName || user.emailAddresses[0]?.emailAddress}!
+            </p>
             <p className='text-sm text-gray-600'>User ID: {user.id}</p>
           </div>
         ) : (

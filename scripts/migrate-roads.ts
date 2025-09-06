@@ -30,7 +30,14 @@ interface MongoNumberDecimal {
 }
 
 type Maybe<T> = T | null | undefined;
-type MongoNumeric = number | string | MongoNumberLong | MongoNumberInt | MongoNumberDouble | MongoNumberDecimal | null;
+type MongoNumeric =
+  | number
+  | string
+  | MongoNumberLong
+  | MongoNumberInt
+  | MongoNumberDouble
+  | MongoNumberDecimal
+  | null;
 
 interface RoadPropertiesMongo {
   u: MongoNumeric;
@@ -79,13 +86,20 @@ function toNumber(value: MongoNumeric): number {
   if (typeof value === 'number') return value;
   if (typeof value === 'string') return Number(value);
   if (isObject(value)) {
-    if ('$numberLong' in value) return Number((value as MongoNumberLong).$numberLong);
-    if ('$numberInt' in value) return Number((value as MongoNumberInt).$numberInt);
-    if ('$numberDouble' in value) return Number((value as MongoNumberDouble).$numberDouble);
-    if ('$numberDecimal' in value) return Number((value as MongoNumberDecimal).$numberDecimal);
+    if ('$numberLong' in value)
+      return Number((value as MongoNumberLong).$numberLong);
+    if ('$numberInt' in value)
+      return Number((value as MongoNumberInt).$numberInt);
+    if ('$numberDouble' in value)
+      return Number((value as MongoNumberDouble).$numberDouble);
+    if ('$numberDecimal' in value)
+      return Number((value as MongoNumberDecimal).$numberDecimal);
   }
   // Debug: log the problematic value
-  console.error('Failed to convert value to number:', JSON.stringify(value, null, 2));
+  console.error(
+    'Failed to convert value to number:',
+    JSON.stringify(value, null, 2)
+  );
   throw new Error(`Invalid numeric value: ${JSON.stringify(value)}`);
 }
 
@@ -94,12 +108,18 @@ function toStringFromMixed(value: string | MongoNumeric): string {
   if (typeof value === 'number') return String(value);
   if (isObject(value)) {
     if ('$numberLong' in value) return (value as MongoNumberLong).$numberLong;
-    if ('$numberInt' in value) return (value as MongoNumberDouble).$numberDouble;
-    if ('$numberDouble' in value) return (value as MongoNumberDouble).$numberDouble;
-    if ('$numberDecimal' in value) return (value as MongoNumberDecimal).$numberDecimal;
+    if ('$numberInt' in value)
+      return (value as MongoNumberDouble).$numberDouble;
+    if ('$numberDouble' in value)
+      return (value as MongoNumberDouble).$numberDouble;
+    if ('$numberDecimal' in value)
+      return (value as MongoNumberDecimal).$numberDecimal;
   }
   // Debug: log the problematic value
-  console.error('Failed to convert value to string:', JSON.stringify(value, null, 2));
+  console.error(
+    'Failed to convert value to string:',
+    JSON.stringify(value, null, 2)
+  );
   throw new Error(`Invalid stringifiable value: ${JSON.stringify(value)}`);
 }
 
@@ -139,7 +159,10 @@ function normalizeRoad(doc: RoadMongo) {
     },
     geometry: {
       type: doc.geometry.type,
-      coordinates: doc.geometry.coordinates.map(pair => [Number(pair[0]), Number(pair[1])]),
+      coordinates: doc.geometry.coordinates.map(pair => [
+        Number(pair[0]),
+        Number(pair[1]),
+      ]),
     },
   } as const;
 }
@@ -165,7 +188,11 @@ function formatTime(ms: number): string {
   return `${minutes}m ${seconds}s`;
 }
 
-async function retryOperation<T>(operation: () => Promise<T>, maxRetries = 3, delay = 1000): Promise<T> {
+async function retryOperation<T>(
+  operation: () => Promise<T>,
+  maxRetries = 3,
+  delay = 1000
+): Promise<T> {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       return await operation();
@@ -182,7 +209,9 @@ async function retryOperation<T>(operation: () => Promise<T>, maxRetries = 3, de
 async function main() {
   const [, , inputPath, urlArg] = process.argv;
   if (!inputPath) {
-    console.error('Usage: bun run scripts/migrate-roads.ts <path-to-json> [convex-url]');
+    console.error(
+      'Usage: bun run scripts/migrate-roads.ts <path-to-json> [convex-url]'
+    );
     process.exit(1);
   }
 
@@ -207,12 +236,17 @@ async function main() {
   // Resume from specific index (change this to resume from where you left off)
   const startFromIndex = 7750;
   normalized = normalized.slice(startFromIndex);
-  console.log(`Resuming migration from index ${startFromIndex}, processing ${normalized.length} remaining roads...`);
-  console.log(`Migration settings: Batch size: ${batchSize}, Delay: ${delayMs}ms`);
+  console.log(
+    `Resuming migration from index ${startFromIndex}, processing ${normalized.length} remaining roads...`
+  );
+  console.log(
+    `Migration settings: Batch size: ${batchSize}, Delay: ${delayMs}ms`
+  );
   console.log(`Starting migration at ${new Date().toISOString()}`);
 
   // Until generated API includes road module, assert the function reference.
-  const insertRoadRef = 'road_networks/mutations/index.js:insertRoad' as unknown as FunctionReference<'mutation'>;
+  const insertRoadRef =
+    'road_networks/mutations/index.js:insertRoad' as unknown as FunctionReference<'mutation'>;
 
   for (let i = 0; i < normalized.length; i += batchSize) {
     const batch = normalized.slice(i, i + batchSize);
@@ -227,8 +261,12 @@ async function main() {
         );
         inserted += 1;
       } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : String(error);
-        console.error(`Failed to insert road ${road.properties.osmid} after all retries:`, errorMessage);
+        const errorMessage =
+          error instanceof Error ? error.message : String(error);
+        console.error(
+          `Failed to insert road ${road.properties.osmid} after all retries:`,
+          errorMessage
+        );
         console.error('Road data:', JSON.stringify(road, null, 2));
         errorCount += 1;
         // Continue with next road instead of stopping
@@ -237,9 +275,12 @@ async function main() {
     await sleep(delayMs);
     // Calculate progress and performance metrics
     const elapsed = Date.now() - startTime;
-    const progress = (((i + batch.length) / normalized.length) * 100).toFixed(2);
+    const progress = (((i + batch.length) / normalized.length) * 100).toFixed(
+      2
+    );
     const avgTimePerRoad = elapsed / (inserted + errorCount);
-    const estimatedTimeRemaining = (normalized.length - (i + batch.length)) * avgTimePerRoad;
+    const estimatedTimeRemaining =
+      (normalized.length - (i + batch.length)) * avgTimePerRoad;
 
     console.log(
       `Batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(normalized.length / batchSize)}: ` +
@@ -263,7 +304,9 @@ async function main() {
   console.log(`Errors encountered: ${errorCount}`);
   console.log(`Success rate: ${successRate}%`);
   console.log(`Total time: ${formatTime(totalTime)}`);
-  console.log(`Average time per road: ${formatTime(totalTime / (inserted + errorCount))}`);
+  console.log(
+    `Average time per road: ${formatTime(totalTime / (inserted + errorCount))}`
+  );
   console.log(`Completed at: ${new Date().toISOString()}`);
   console.log('='.repeat(60));
 }

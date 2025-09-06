@@ -6,7 +6,10 @@ export const getUserByEmailArgs = v.object({
   email: v.string(),
 });
 
-export const getUserByEmailHandler = async (ctx: QueryCtx, args: Infer<typeof getUserByEmailArgs>) => {
+export const getUserByEmailHandler = async (
+  ctx: QueryCtx,
+  args: Infer<typeof getUserByEmailArgs>
+) => {
   const { email } = args;
   const user = await ctx.db
     .query('users')

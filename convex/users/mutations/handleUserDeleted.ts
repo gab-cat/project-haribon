@@ -6,7 +6,10 @@ export const handleUserDeletedArgs = {
   clerkUserId: v.string(),
 };
 
-export const handleUserDeletedHandler = async (ctx: MutationCtx, args: { clerkUserId: string }) => {
+export const handleUserDeletedHandler = async (
+  ctx: MutationCtx,
+  args: { clerkUserId: string }
+) => {
   const { clerkUserId } = args;
 
   try {

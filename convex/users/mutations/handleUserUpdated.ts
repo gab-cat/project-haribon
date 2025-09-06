@@ -48,11 +48,13 @@ export const handleUserUpdatedHandler = async (
     }
 
     // Extract updated data from Clerk user object
-    const email = clerkUser.email_addresses?.[0]?.email_address || existingUser.email;
+    const email =
+      clerkUser.email_addresses?.[0]?.email_address || existingUser.email;
     const firstName = clerkUser.first_name || existingUser.firstName;
     const lastName = clerkUser.last_name || existingUser.lastName;
     const imageUrl = clerkUser.image_url || existingUser.imageUrl;
-    const phone = clerkUser.phone_numbers?.[0]?.phone_number || existingUser.phone;
+    const phone =
+      clerkUser.phone_numbers?.[0]?.phone_number || existingUser.phone;
 
     // Update user
     await ctx.db.patch(existingUser._id, {
