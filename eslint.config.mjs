@@ -12,6 +12,39 @@ import tseslint from 'typescript-eslint';
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
+    ignores: [
+      // Build outputs
+      '.next/**',
+      'out/**',
+      'build/**',
+      '.open-next/**',
+      
+      // Generated files
+      'convex/_generated/**',
+      'node_modules/**',
+      
+      // Environment files
+      'next-env.d.ts',
+      '.env*',
+      '!.env.example',
+      '.dev.vars*',
+      '!.dev.vars.example',
+      
+      // Other generated/config files
+      '*.tsbuildinfo',
+      '.DS_Store',
+      '*.pem',
+      'npm-debug.log*',
+      'yarn-debug.log*',
+      'yarn-error.log*',
+      '.vercel/**',
+      '.wrangler/**',
+      '.pnp.js',
+      '.yarn/**',
+      '/coverage/**'
+    ]
+  },
+  {
     files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}'],
     languageOptions: { 
       globals: {
@@ -43,9 +76,12 @@ export default [
     },
     rules: {
       // Basic formatting
-      'indent': ['error', 2],
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single', { 'avoidEscape': true }],
+      // 'indent': 'off',
+      // 'no-mixed-spaces-and-tabs': ['error', 'smart-tabs'],
+      // 'react/jsx-indent': 'off',
+      // 'react/jsx-indent-props': 'off',
+      // 'semi': ['error', 'always'],
+      // 'quotes': ['error', 'single', { 'avoidEscape': true }],
       
       // Import sorting and grouping
       'simple-import-sort/imports': ['error', {

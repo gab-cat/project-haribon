@@ -5,6 +5,7 @@ A modern web application built with Next.js, Convex, and Clerk, deployed on Clou
 ## Tech Stack
 
 ### Frontend
+
 - **Next.js 15.5.0** - React framework with App Router
 - **React 19.1.1** - UI library
 - **TypeScript** - Type-safe JavaScript
@@ -14,6 +15,7 @@ A modern web application built with Next.js, Convex, and Clerk, deployed on Clou
 - **Zustand** - State management
 
 ### Backend
+
 - **Convex** - Backend-as-a-service with real-time database
 - **Cloudflare Workers** - Serverless deployment platform
 - **R2** - Object storage for files
@@ -70,6 +72,7 @@ A modern web application built with Next.js, Convex, and Clerk, deployed on Clou
 ## Installation and Setup
 
 ### Prerequisites
+
 - Node.js 22.16.x (recommended: use nvm)
 - Bun package manager
 - Clerk account
@@ -95,17 +98,20 @@ CONVEX_DEPLOYMENT=your_convex_deployment_or_dev_if_local
 ### Installation
 
 1. Clone the repository
+
 ```bash
 git clone https://github.com/yourusername/project-haribon.git
 cd project-haribon
 ```
 
 2. Install dependencies
+
 ```bash
 bun install
 ```
 
 3. Start the development server
+
 ```bash
 bun dev
 ```

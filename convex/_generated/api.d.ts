@@ -8,26 +8,19 @@
  * @module
  */
 
-import type * as files_mutations_deleteFile from "../files/mutations/deleteFile.js";
-import type * as files_mutations_index from "../files/mutations/index.js";
-import type * as files_r2 from "../files/r2.js";
-import type * as http from "../http.js";
-import type * as users_api from "../users/api.js";
-import type * as users_mutations_handleUserCreated from "../users/mutations/handleUserCreated.js";
-import type * as users_mutations_handleUserDeleted from "../users/mutations/handleUserDeleted.js";
-import type * as users_mutations_handleUserUpdated from "../users/mutations/handleUserUpdated.js";
-import type * as users_mutations_index from "../users/mutations/index.js";
-import type * as users_queries_getCurrentAuthenticatedUser from "../users/queries/getCurrentAuthenticatedUser.js";
-import type * as users_queries_getUserByEmail from "../users/queries/getUserByEmail.js";
-import type * as users_queries_getUsers from "../users/queries/getUsers.js";
-import type * as users_queries_index from "../users/queries/index.js";
-import type * as users_webhook from "../users/webhook.js";
+import type * as http from '../http.js';
+import type * as users_api from '../users/api.js';
+import type * as users_mutations_handleUserCreated from '../users/mutations/handleUserCreated.js';
+import type * as users_mutations_handleUserDeleted from '../users/mutations/handleUserDeleted.js';
+import type * as users_mutations_handleUserUpdated from '../users/mutations/handleUserUpdated.js';
+import type * as users_mutations_index from '../users/mutations/index.js';
+import type * as users_queries_getCurrentAuthenticatedUser from '../users/queries/getCurrentAuthenticatedUser.js';
+import type * as users_queries_getUserByEmail from '../users/queries/getUserByEmail.js';
+import type * as users_queries_getUsers from '../users/queries/getUsers.js';
+import type * as users_queries_index from '../users/queries/index.js';
+import type * as users_webhook from '../users/webhook.js';
 
-import type {
-  ApiFromModules,
-  FilterApi,
-  FunctionReference,
-} from "convex/server";
+import type { ApiFromModules, FilterApi, FunctionReference } from 'convex/server';
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -38,44 +31,30 @@ import type {
  * ```
  */
 declare const fullApi: ApiFromModules<{
-  "files/mutations/deleteFile": typeof files_mutations_deleteFile;
-  "files/mutations/index": typeof files_mutations_index;
-  "files/r2": typeof files_r2;
   http: typeof http;
-  "users/api": typeof users_api;
-  "users/mutations/handleUserCreated": typeof users_mutations_handleUserCreated;
-  "users/mutations/handleUserDeleted": typeof users_mutations_handleUserDeleted;
-  "users/mutations/handleUserUpdated": typeof users_mutations_handleUserUpdated;
-  "users/mutations/index": typeof users_mutations_index;
-  "users/queries/getCurrentAuthenticatedUser": typeof users_queries_getCurrentAuthenticatedUser;
-  "users/queries/getUserByEmail": typeof users_queries_getUserByEmail;
-  "users/queries/getUsers": typeof users_queries_getUsers;
-  "users/queries/index": typeof users_queries_index;
-  "users/webhook": typeof users_webhook;
+  'users/api': typeof users_api;
+  'users/mutations/handleUserCreated': typeof users_mutations_handleUserCreated;
+  'users/mutations/handleUserDeleted': typeof users_mutations_handleUserDeleted;
+  'users/mutations/handleUserUpdated': typeof users_mutations_handleUserUpdated;
+  'users/mutations/index': typeof users_mutations_index;
+  'users/queries/getCurrentAuthenticatedUser': typeof users_queries_getCurrentAuthenticatedUser;
+  'users/queries/getUserByEmail': typeof users_queries_getUserByEmail;
+  'users/queries/getUsers': typeof users_queries_getUsers;
+  'users/queries/index': typeof users_queries_index;
+  'users/webhook': typeof users_webhook;
 }>;
 declare const fullApiWithMounts: typeof fullApi;
 
-export declare const api: FilterApi<
-  typeof fullApiWithMounts,
-  FunctionReference<any, "public">
->;
-export declare const internal: FilterApi<
-  typeof fullApiWithMounts,
-  FunctionReference<any, "internal">
->;
+export declare const api: FilterApi<typeof fullApiWithMounts, FunctionReference<any, 'public'>>;
+export declare const internal: FilterApi<typeof fullApiWithMounts, FunctionReference<any, 'internal'>>;
 
 export declare const components: {
   r2: {
     lib: {
-      deleteMetadata: FunctionReference<
-        "mutation",
-        "internal",
-        { bucket: string; key: string },
-        null
-      >;
+      deleteMetadata: FunctionReference<'mutation', 'internal', { bucket: string; key: string }, null>;
       deleteObject: FunctionReference<
-        "mutation",
-        "internal",
+        'mutation',
+        'internal',
         {
           accessKeyId: string;
           bucket: string;
@@ -86,8 +65,8 @@ export declare const components: {
         null
       >;
       deleteR2Object: FunctionReference<
-        "action",
-        "internal",
+        'action',
+        'internal',
         {
           accessKeyId: string;
           bucket: string;
@@ -98,8 +77,8 @@ export declare const components: {
         null
       >;
       getMetadata: FunctionReference<
-        "query",
-        "internal",
+        'query',
+        'internal',
         {
           accessKeyId: string;
           bucket: string;
@@ -120,8 +99,8 @@ export declare const components: {
         } | null
       >;
       listMetadata: FunctionReference<
-        "query",
-        "internal",
+        'query',
+        'internal',
         {
           accessKeyId: string;
           bucket: string;
@@ -144,13 +123,13 @@ export declare const components: {
             size?: number;
             url: string;
           }>;
-          pageStatus?: null | "SplitRecommended" | "SplitRequired";
+          pageStatus?: null | 'SplitRecommended' | 'SplitRequired';
           splitCursor?: null | string;
         }
       >;
       store: FunctionReference<
-        "action",
-        "internal",
+        'action',
+        'internal',
         {
           accessKeyId: string;
           bucket: string;
@@ -161,8 +140,8 @@ export declare const components: {
         any
       >;
       syncMetadata: FunctionReference<
-        "action",
-        "internal",
+        'action',
+        'internal',
         {
           accessKeyId: string;
           bucket: string;
@@ -174,8 +153,8 @@ export declare const components: {
         null
       >;
       upsertMetadata: FunctionReference<
-        "mutation",
-        "internal",
+        'mutation',
+        'internal',
         {
           bucket: string;
           contentType?: string;

@@ -14,7 +14,7 @@ http.route({
     try {
       // Get the webhook secret from environment variables
       const webhookSecret = process.env.CLERK_WEBHOOK_SECRET;
-      
+
       if (!webhookSecret) {
         console.error('CLERK_WEBHOOK_SECRET is not set');
         return new Response('Webhook secret not configured', { status: 500 });
@@ -56,26 +56,26 @@ http.route({
 
       // Handle different event types
       switch (event.type) {
-      case 'user.created':
-        await ctx.runMutation(internal.users.webhook.handleUserCreated, {
-          clerkUser: event.data,
-        });
-        break;
+        case 'user.created':
+          await ctx.runMutation(internal.users.webhook.handleUserCreated, {
+            clerkUser: event.data,
+          });
+          break;
 
-      case 'user.updated':
-        await ctx.runMutation(internal.users.webhook.handleUserUpdated, {
-          clerkUser: event.data,
-        });
-        break;
+        case 'user.updated':
+          await ctx.runMutation(internal.users.webhook.handleUserUpdated, {
+            clerkUser: event.data,
+          });
+          break;
 
-      case 'user.deleted':
-        await ctx.runMutation(internal.users.webhook.handleUserDeleted, {
-          clerkUserId: (event.data as { id: string }).id,
-        });
-        break;
+        case 'user.deleted':
+          await ctx.runMutation(internal.users.webhook.handleUserDeleted, {
+            clerkUserId: (event.data as { id: string }).id,
+          });
+          break;
 
-      default:
-        console.log('Unhandled event type:', event.type);
+        default:
+          console.log('Unhandled event type:', event.type);
       }
 
       return new Response('Webhook processed successfully', { status: 200 });
