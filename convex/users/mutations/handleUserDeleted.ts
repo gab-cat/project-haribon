@@ -3,7 +3,7 @@ import { v } from 'convex/values';
 import { MutationCtx } from '@/convex/_generated/server';
 
 export const handleUserDeletedArgs = {
-  clerkUserId: v.string()
+  clerkUserId: v.string(),
 };
 
 export const handleUserDeletedHandler = async (ctx: MutationCtx, args: { clerkUserId: string }) => {
@@ -15,7 +15,7 @@ export const handleUserDeletedHandler = async (ctx: MutationCtx, args: { clerkUs
     // Find existing user
     const existingUser = await ctx.db
       .query('users')
-      .withIndex('by_clerkId', (q) => q.eq('clerkId', clerkUserId))
+      .withIndex('by_clerkId', q => q.eq('clerkId', clerkUserId))
       .first();
 
     if (!existingUser) {

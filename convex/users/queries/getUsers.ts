@@ -4,7 +4,7 @@ import { Infer, v } from 'convex/values';
 import { QueryCtx } from '@/convex/_generated/server';
 
 export const getUsersArgs = v.object({
-  paginationOpts: paginationOptsValidator
+  paginationOpts: paginationOptsValidator,
 });
 
 export const getUsersHandler = async (ctx: QueryCtx, args: Infer<typeof getUsersArgs>) => {

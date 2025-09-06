@@ -7,19 +7,19 @@ import {
   getUserByEmailArgs,
   getUserByEmailHandler,
   getUsersArgs,
-  getUsersHandler
+  getUsersHandler,
 } from './queries';
 
 export const getUserByEmail = query({
   args: getUserByEmailArgs,
-  handler: getUserByEmailHandler
+  handler: getUserByEmailHandler,
 });
 
 export const getUsers = query({
   args: getUsersArgs,
-  handler: getUsersHandler
+  handler: getUsersHandler,
 });
 
 export const getCurrentAuthenticatedUser = query({
-  handler: getCurrentAuthenticatedUserHandler
+  handler: getCurrentAuthenticatedUserHandler,
 });

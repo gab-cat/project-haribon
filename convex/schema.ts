@@ -5,5 +5,5 @@ import { users } from './users/users.model';
 
 export default defineSchema({
   users,
-  roadNetworks
+  roadNetworks,
 });

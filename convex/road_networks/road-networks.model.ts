@@ -29,7 +29,7 @@ export const roadNetworks = defineTable({
     access: v.optional(v.string()),
     width: v.optional(v.string()),
     junction: v.optional(v.string()),
-    tunnel: v.optional(v.string())
+    tunnel: v.optional(v.string()),
   }),
 
   geometry: v.object({
@@ -37,5 +37,3 @@ export const roadNetworks = defineTable({
     coordinates: v.array(v.array(v.number())), // [[lng, lat], ...]
   }),
 });
-
-

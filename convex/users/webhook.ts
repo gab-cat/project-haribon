@@ -6,20 +6,20 @@ import {
   handleUserDeletedArgs,
   handleUserDeletedHandler,
   handleUserUpdatedArgs,
-  handleUserUpdatedHandler
+  handleUserUpdatedHandler,
 } from './mutations';
 
 export const handleUserCreated = internalMutation({
   args: handleUserCreatedArgs,
-  handler: handleUserCreatedHandler
+  handler: handleUserCreatedHandler,
 });
 
 export const handleUserUpdated = internalMutation({
   args: handleUserUpdatedArgs,
-  handler: handleUserUpdatedHandler
+  handler: handleUserUpdatedHandler,
 });
 
 export const handleUserDeleted = internalMutation({
   args: handleUserDeletedArgs,
-  handler: handleUserDeletedHandler
+  handler: handleUserDeletedHandler,
 });

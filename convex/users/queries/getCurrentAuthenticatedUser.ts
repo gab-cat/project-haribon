@@ -8,7 +8,7 @@ export const getCurrentAuthenticatedUserHandler = async (ctx: QueryCtx) => {
   // Get user by Clerk ID
   const user = await ctx.db
     .query('users')
-    .withIndex('by_clerkId', (q) => q.eq('clerkId', identity.subject))
+    .withIndex('by_clerkId', q => q.eq('clerkId', identity.subject))
     .first();
 
   if (!user) {

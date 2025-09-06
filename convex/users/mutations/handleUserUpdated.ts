@@ -3,7 +3,7 @@ import { v } from 'convex/values';
 import { MutationCtx } from '@/convex/_generated/server';
 
 export const handleUserUpdatedArgs = {
-  clerkUser: v.any()
+  clerkUser: v.any(),
 };
 
 export const handleUserUpdatedHandler = async (
@@ -19,7 +19,7 @@ export const handleUserUpdatedHandler = async (
     // Find existing user
     const existingUser = await ctx.db
       .query('users')
-      .withIndex('by_clerkId', (q) => q.eq('clerkId', clerkUser.id))
+      .withIndex('by_clerkId', q => q.eq('clerkId', clerkUser.id))
       .first();
 
     if (!existingUser) {
@@ -40,7 +40,7 @@ export const handleUserUpdatedHandler = async (
         lastName,
         imageUrl,
         phone,
-        role: 'user'
+        role: 'user',
       });
 
       console.log('User created successfully:', userId);
@@ -60,7 +60,7 @@ export const handleUserUpdatedHandler = async (
       firstName,
       lastName,
       imageUrl,
-      phone
+      phone,
     });
 
     console.log('User updated successfully:', existingUser._id);

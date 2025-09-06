@@ -2,11 +2,7 @@ import Link from 'next/link';
 
 import { ArrowLeft } from 'lucide-react';
 
-export default function AuthenticationLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AuthenticationLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className='min-h-screen bg-gray-50 flex flex-col'>
       {/* Header */}

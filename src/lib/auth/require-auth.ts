@@ -9,7 +9,8 @@ export async function requireAuth() {
   if (session) return session;
 
   const headersList = await headers();
-  const currentPath = headersList.get('x-current-path') || headersList.get('x-pathname') || headersList.get('x-invoke-path') || '/';
+  const currentPath =
+    headersList.get('x-current-path') || headersList.get('x-pathname') || headersList.get('x-invoke-path') || '/';
 
   redirect(`/sign-in?returnTo=${encodeURIComponent(currentPath)}`);
 }
