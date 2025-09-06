@@ -48,14 +48,24 @@ const brandClassNames = {
   title: 'text-sm font-semibold',
   description: 'text-xs text-muted-foreground',
   closeButton: 'text-muted-foreground hover:text-foreground transition-colors',
-  actionButton: 'bg-secondary text-foreground hover:bg-secondary/80 transition-colors',
-  cancelButton: 'bg-secondary text-foreground hover:bg-secondary/80 transition-colors',
+  actionButton:
+    'bg-secondary text-foreground hover:bg-secondary/80 transition-colors',
+  cancelButton:
+    'bg-secondary text-foreground hover:bg-secondary/80 transition-colors',
 } as const;
 
 export const showToast = ({ type, title, ...options }: ShowToastParams) => {
   const defaults = toastStyles[type];
 
-  const { description, duration, position, richColors, unstyled, classNames, ...restOptions } = options;
+  const {
+    description,
+    duration,
+    position,
+    richColors,
+    unstyled,
+    classNames,
+    ...restOptions
+  } = options;
 
   toast[type](title, {
     description,
@@ -99,7 +109,10 @@ export async function promiseToast<T>(
   });
   try {
     const value = await promise;
-    const successText = typeof messages.success === 'function' ? messages.success(value) : messages.success;
+    const successText =
+      typeof messages.success === 'function'
+        ? messages.success(value)
+        : messages.success;
     toast.success(successText, {
       id,
       position: position ?? 'top-right',
@@ -116,7 +129,9 @@ export async function promiseToast<T>(
     return value;
   } catch (error: unknown) {
     const errorText =
-      typeof messages.error === 'function' ? messages.error(error) : messages.error || 'Something went wrong';
+      typeof messages.error === 'function'
+        ? messages.error(error)
+        : messages.error || 'Something went wrong';
     toast.error(errorText, {
       id,
       position: position ?? 'top-right',

@@ -41,6 +41,8 @@ export const handleUserCreatedHandler = async (
       firstName,
       lastName,
       imageUrl,
+      frontIdImageUrl: '',
+      backIdImageUrl: '',
       phone,
       role: 'user',
     });

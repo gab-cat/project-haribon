@@ -514,7 +514,13 @@ Internal Functions:
 #### convex/index.ts
 
 ```typescript
-import { query, mutation, internalQuery, internalMutation, internalAction } from './_generated/server';
+import {
+  query,
+  mutation,
+  internalQuery,
+  internalMutation,
+  internalAction,
+} from './_generated/server';
 import { v } from 'convex/values';
 import OpenAI from 'openai';
 import { internal } from './_generated/api';

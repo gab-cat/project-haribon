@@ -10,7 +10,9 @@ export async function requireAuth() {
 
   const headersList = await headers();
   const rawPath =
-    headersList.get('x-current-path') || headersList.get('x-pathname')  || headersList.get('x-invoke-path') ||
+    headersList.get('x-current-path') ||
+    headersList.get('x-pathname') ||
+    headersList.get('x-invoke-path') ||
     '/';
   const safeReturnTo = rawPath.startsWith('/') ? rawPath : '/';
 

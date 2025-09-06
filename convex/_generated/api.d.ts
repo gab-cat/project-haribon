@@ -20,7 +20,11 @@ import type * as users_queries_getUsers from '../users/queries/getUsers.js';
 import type * as users_queries_index from '../users/queries/index.js';
 import type * as users_webhook from '../users/webhook.js';
 
-import type { ApiFromModules, FilterApi, FunctionReference } from 'convex/server';
+import type {
+  ApiFromModules,
+  FilterApi,
+  FunctionReference,
+} from 'convex/server';
 
 /**
  * A utility for referencing Convex functions in your app's API.
@@ -45,13 +49,24 @@ declare const fullApi: ApiFromModules<{
 }>;
 declare const fullApiWithMounts: typeof fullApi;
 
-export declare const api: FilterApi<typeof fullApiWithMounts, FunctionReference<any, 'public'>>;
-export declare const internal: FilterApi<typeof fullApiWithMounts, FunctionReference<any, 'internal'>>;
+export declare const api: FilterApi<
+  typeof fullApiWithMounts,
+  FunctionReference<any, 'public'>
+>;
+export declare const internal: FilterApi<
+  typeof fullApiWithMounts,
+  FunctionReference<any, 'internal'>
+>;
 
 export declare const components: {
   r2: {
     lib: {
-      deleteMetadata: FunctionReference<'mutation', 'internal', { bucket: string; key: string }, null>;
+      deleteMetadata: FunctionReference<
+        'mutation',
+        'internal',
+        { bucket: string; key: string },
+        null
+      >;
       deleteObject: FunctionReference<
         'mutation',
         'internal',
