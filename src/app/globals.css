@@ -120,3 +120,7 @@
     @apply bg-background text-foreground;
   }
 }
+
+.cl-internal-1dauvpw {
+  @apply !hidden;
+}

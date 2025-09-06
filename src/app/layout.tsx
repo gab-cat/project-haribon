@@ -26,12 +26,32 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
   return (
     <html lang='en'>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ClerkProvider signInUrl='/sign-in' signUpUrl='/sign-up'>
+        <ClerkProvider signInUrl='/sign-in' signUpUrl='/sign-up'
+          appearance={{
+            variables: {
+              colorPrimary: '#2489EE',
+            },
+            layout: {
+              socialButtonsPlacement: 'bottom',
+              shimmer: true,
+            },
+            captcha: {
+              theme: 'auto',
+              size: 'flexible',
+            },
+            elements: {
+              card: '!bg-transparent !shadow-none',
+              cardBox: '!bg-transparent !shadow-none',
+              input: '!p-2.5',
+              formButtonPrimary: '!p-2.5',
+              socialButtonsBlockButton: '!p-2.5',
+            },
+          }}>
           <ConvexClientProvider>{children}</ConvexClientProvider>
         </ClerkProvider>
         <Toaster />
